@@ -1,1 +1,17 @@
+#The plugins prefix, only change what's inside the quotes.
+#Change it to whatever you wish.
 Prefix: '&bRedeemables &7» '
+
+#Valid Actions: GiveItem, RunCommand
+#Valid Placeholders: PLAYER, AMOUNT
+RedeemTypes:
+  #Default Item Redeem Type
+  #This will tell the plugin to give an item when the Code is redeemed
+  Item:
+    Action: GiveItem
+  #Default Command Redeem Type
+  #This will tell the plugin to run the specified command when the Code is redeemed
+  #In this, it will give the user redeeming the command money using Essentials/Vault.
+  Money:
+    Action: RunCommand
+    Command: 'eco give PLAYER AMOUNT'

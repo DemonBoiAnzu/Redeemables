@@ -5,10 +5,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import java.io.IOException;
-
 public class RedeemReload implements CommandExecutor {
     final Redeemables main = Redeemables.getInstance();
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         main.loadCustomConfigs();
