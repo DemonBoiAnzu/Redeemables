@@ -1,0 +1,26 @@
+name: Redeemables
+version: '1.0'
+api-version: '1.16'
+main: com.github.steeldev.redeemables.Redeemables
+description: A plugin that allows server owners to generate redeem-codes players can use to get items, and other things! Perfect for giveaways.
+author: Steel_Dev
+commands:
+  redeemables-reload:
+    description: Reload the configuration.
+    aliases: rdreload
+    permission: redeemables.admin
+    permission-message: You dont have permission to use this command.
+  redeemablesadmin:
+    description: Admin commands for Redeemables.
+    aliases: rdadmin
+    permission: redeemables.admin
+    permission-message: You dont have permission to use this command.
+    usage: redeemablesadmin <arguments>
+  redeem:
+    description: Redeem a code for prizes!
+    aliases: rd
+    usage: redeem <code>
+permissions:
+  redeemables.admin:
+    description: Allows the user administrator permissions for Redeemables.
+    default: op
