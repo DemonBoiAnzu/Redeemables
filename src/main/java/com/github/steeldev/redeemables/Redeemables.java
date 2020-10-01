@@ -33,6 +33,7 @@ public class Redeemables extends JavaPlugin {
         instance = this;
 
         loadCustomConfigs();
+        registerCommands();
 
         getLogger().info(colorize("&bRedeemables &2Enabled!"));
     }
@@ -53,7 +54,7 @@ public class Redeemables extends JavaPlugin {
     }
 
     public void registerCommands(){
-        this.getCommand("redeemables-reload").setExecutor(new RedeemReload());
+        this.getCommand("redeemablesreload").setExecutor(new RedeemReload());
         this.getCommand("redeemablesadmin").setExecutor(new RedeemAdminCommand());
         this.getCommand("redeem").setExecutor(new RedeemCommand());
     }

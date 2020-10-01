@@ -5,7 +5,7 @@ main: com.github.steeldev.redeemables.Redeemables
 description: A plugin that allows server owners to generate redeem-codes players can use to get items, and other things! Perfect for giveaways.
 author: Steel_Dev
 commands:
-  redeemables-reload:
+  redeemablesreload:
     description: Reload the configuration.
     aliases: rdreload
     permission: redeemables.admin
