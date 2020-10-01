@@ -17,9 +17,9 @@ public class Redeemables extends JavaPlugin {
     public FileConfiguration config = null;
     public FileConfiguration redeemCodes = null;
     public Random rand = new Random();
-    String configPath = getDataFolder() + "/Configuration/Config.yml";
+    String configPath = getDataFolder() + "/Config.yml";
     public final File configFile = new File(configPath);
-    String redeemCodesPath = getDataFolder() + "/Data/RedeemCodes.yml";
+    String redeemCodesPath = getDataFolder() + "/RedeemCodes.yml";
     public final File redeemCodesFile = new File(redeemCodesPath);
 
     public static Redeemables getInstance() {
@@ -43,11 +43,11 @@ public class Redeemables extends JavaPlugin {
 
     public void loadCustomConfigs() {
         if (!configFile.exists())
-            saveResource("Configuration/Config.yml", false);
+            saveResource("Config.yml", false);
         config = YamlConfiguration.loadConfiguration(configFile);
 
         if (!redeemCodesFile.exists())
-            saveResource("Data/RedeemCodes.yml", false);
+            saveResource("RedeemCodes.yml", false);
         redeemCodes = YamlConfiguration.loadConfiguration(redeemCodesFile);
     }
 
