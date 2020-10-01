@@ -22,6 +22,7 @@ public class RedeemAdminCommand implements CommandExecutor, TabCompleter {
         if(strings.length > 0){
             if(strings[0].equalsIgnoreCase(SUB_COMMANDS[0])){
                 commandSender.sendMessage(main.colorize(main.config.getString("Prefix") + "&7Test Code: &a" + RedeemSystem.generateRedeemCode()));
+                return true;
             }
         }
         return true;
