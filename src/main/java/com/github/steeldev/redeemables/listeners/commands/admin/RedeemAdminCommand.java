@@ -1,7 +1,7 @@
 package com.github.steeldev.redeemables.listeners.commands.admin;
 
 import com.github.steeldev.redeemables.Redeemables;
-import com.github.steeldev.redeemables.main.RedeemSystem;
+import com.github.steeldev.redeemables.systems.RedeemSystem;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

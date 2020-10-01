@@ -1,4 +1,4 @@
-package com.github.steeldev.redeemables.main;
+package com.github.steeldev.redeemables.systems;
 
 import com.github.steeldev.redeemables.Redeemables;
 import jdk.internal.jline.internal.Nullable;
