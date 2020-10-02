@@ -14,16 +14,44 @@ public class RedeemSystem {
 
     static String[] alpnum = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
-    public static String generateRedeemCode() {
+    public static String generateRedeemCode() throws IOException {
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < 12; i++) {
+        String codeType = (main.config.getString("Code.Type") != null) ? main.config.getString("Code.Type") : "short";
+
+        if (!codeType.equalsIgnoreCase("short") &&
+                !codeType.equalsIgnoreCase("medium") &&
+                !codeType.equalsIgnoreCase("long"))
+            codeType = "short";
+
+        int codeLength = 0;
+
+        switch (codeType.toLowerCase()) {
+            case "short":
+                codeLength = 4;
+                break;
+            case "medium":
+                codeLength = 8;
+                break;
+            case "long":
+                codeLength = 12;
+                break;
+        }
+        int dashOffset = 4;
+        String codePrefix = main.config.getString("Code.Prefix");
+
+        int temp = 0;
+        for (int i = 0; i < codeLength; i++) {
             String resAdd = alpnum[main.rand.nextInt(alpnum.length)];
             if (main.chanceOf(80)) resAdd = resAdd.toUpperCase();
             result.append(resAdd);
+            temp++;
+            if (temp == dashOffset && i != codeLength - 1) {
+                result.append("-");
+                temp = 0;
+            }
         }
-
-        return result.insert(4, "-").insert(8, "-").toString();
+        return result.insert(0, codePrefix).toString();
     }
 
     public static void createRedeem(String type, @Nullable ItemStack item, int amount, int maxRedeems, String code, String display) throws IOException {
@@ -53,7 +81,7 @@ public class RedeemSystem {
         List<String> redeemedBy = main.redeemCodes.getStringList("Codes." + code + ".RedeemedBy");
         ItemStack item = main.redeemCodes.getItemStack("Codes." + code + ".Item");
 
-        if (redeemedBy.size() >= maxRedeems) return RedeemState.CANT_BE_REDEEMED;
+        if (redeemedBy.size() >= maxRedeems && maxRedeems > 0) return RedeemState.CANT_BE_REDEEMED;
 
         if (redeemedBy.contains(player.getUniqueId().toString())) return RedeemState.ALREADY_REDEEMED;
 

@@ -2,6 +2,16 @@
 #Change it to whatever you wish.
 Prefix: '&bRedeemables &7» '
 
+Code:
+  #The codes prefix, to make it unique to your server
+  Prefix: 'R-'
+  #Size of the code
+  #Valid Code Types:
+  #Short : XXXX
+  #Medium : XXXX-XXXX
+  #Long : XXXX-XXXX-XXXX
+  Type: Medium
+
 #Valid Actions: GiveItem, RunCommand
 #Valid Placeholders: PLAYER, AMOUNT
 RedeemTypes:
