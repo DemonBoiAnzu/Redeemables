@@ -6,6 +6,7 @@ import com.github.steeldev.redeemables.listeners.commands.user.RedeemCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -37,12 +38,12 @@ public class Redeemables extends JavaPlugin {
         loadCustomConfigs();
         registerCommands();
 
-        getLogger().info(colorize("&bRedeemables &2Enabled!"));
+        getLogger().info(colorize("&bRedeemables &5v" + getDescription().getVersion() + " &2Enabled!"));
     }
 
     @Override
     public void onDisable() {
-        getLogger().info(colorize("&bRedeemables &cDisabled!"));
+        getLogger().info(colorize("&bRedeemables &5v" + getDescription().getVersion() + " &cDisabled!"));
     }
 
     public void loadCustomConfigs() {

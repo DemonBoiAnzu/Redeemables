@@ -1,5 +1,5 @@
 name: Redeemables
-version: '1.0.2'
+version: '1.0.3'
 api-version: '1.16'
 main: com.github.steeldev.redeemables.Redeemables
 description: A plugin that allows server owners to generate redeem-codes players can use to get items, and other things! Perfect for giveaways.

@@ -57,7 +57,7 @@ public class RedeemSystem {
     public static void createRedeem(String type, @Nullable ItemStack item, int amount, int maxRedeems, String code, String display) throws IOException {
         if (main.redeemCodes.get("Codes." + code) != null) return;
 
-        main.redeemCodes.set("Codes." + code + ".RedeemDisplay", display);
+        main.redeemCodes.set("Codes." + code + ".RedeemDisplay", display.replaceAll("_", " "));
         main.redeemCodes.set("Codes." + code + ".Type", type);
         main.redeemCodes.set("Codes." + code + ".Amount", amount);
         main.redeemCodes.set("Codes." + code + ".MaxRedeems", maxRedeems);

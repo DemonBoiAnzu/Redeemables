@@ -102,7 +102,6 @@ public class RedeemAdminCommand implements CommandExecutor, TabCompleter {
                                     }
                                     amount = item.getAmount();
                                 }
-
                                 try {
                                     RedeemSystem.createRedeem(type, item, amount, maxRedeems, code, display);
                                 } catch (IOException e) {
@@ -112,7 +111,7 @@ public class RedeemAdminCommand implements CommandExecutor, TabCompleter {
                                 String itDisp = (item == null) ? "None" : (item.getItemMeta() == null || item.getItemMeta().getDisplayName().isEmpty()) ? item.getType().toString() : item.getItemMeta().getDisplayName();
 
                                 String am = (maxRedeems == 0) ? "Infinite" : String.valueOf(maxRedeems);
-                                commandSender.sendMessage(main.colorize(main.config.getString("Prefix") + "&aSuccessfully created a Redeem for &e" + display + "&a! &8(&7Type: " + type + ", Amount: " + amount + ", MaxRedeems: " + am + ", Item: " + itDisp + "&8) &aWith the code: &6" + code + "&a!"));
+                                commandSender.sendMessage(main.colorize(main.config.getString("Prefix") + "&aSuccessfully created a Redeem for &e" + display.replaceAll("_", " ") + "&a! &8(&7Type: " + type + ", Amount: " + amount + ", MaxRedeems: " + am + ", Item: " + itDisp + "&8) &aWith the code: &6" + code + "&a!"));
                             } else {
                                 commandSender.sendMessage(main.colorize(main.config.getString("Prefix") + "&cPlease provide a display!"));
                             }
@@ -221,6 +220,18 @@ public class RedeemAdminCommand implements CommandExecutor, TabCompleter {
                     StringUtil.copyPartialMatches(strings[1], codes.getKeys(false), completions);
                     Collections.sort(completions);
                     return completions;
+                }
+                return new ArrayList<>();
+            }
+            if(strings[0].equalsIgnoreCase(SUB_COMMANDS[1])){
+                final List<String> completions = new ArrayList<>();
+                ConfigurationSection codeTypes = main.config.getConfigurationSection("RedeemTypes");
+                if (codeTypes != null && codeTypes.getKeys(false).size() > 0 && strings.length > 1) {
+                    if(!codeTypes.getKeys(false).contains(strings[1])) {
+                        StringUtil.copyPartialMatches(strings[1], codeTypes.getKeys(false), completions);
+                        Collections.sort(completions);
+                        return completions;
+                    }
                 }
                 return new ArrayList<>();
             }
